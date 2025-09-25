@@ -2,7 +2,7 @@
 import axios from "axios";
 
 const api = axios.create({
-    baseURL: "http://localhost:5000/api", // 👈 backend URL
+    baseURL: "https://student-attendance-dashboard-backend.onrender.com/api", // 👈 backend URL
 });
 
 // Attach token to every request
