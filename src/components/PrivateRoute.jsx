@@ -10,7 +10,7 @@ const PrivateRoute = () => {
     }
     // If user is not logged in → redirect to login
     if (!user) {
-        return <Navigate to="/login" replace />;
+        return <Navigate to="/" replace />;
     }
     // If user is logged in → render children routes
     return <Outlet />;

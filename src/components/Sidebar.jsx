@@ -20,7 +20,7 @@ const Sidebar = () => {
     const handleLogout = (e) => {
         e.preventDefault();
         logout();
-        navigate("/home");
+        navigate("/");
     };
 
     return (

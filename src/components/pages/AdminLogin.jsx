@@ -2,32 +2,24 @@ import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 
-function Login() {
+const AdminLogin = () => {
     const { login } = useContext(AuthContext);
     const navigate = useNavigate();
-
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [role, setRole] = useState("teacher");
     const [error, setError] = useState("");
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError("");
         try {
-            await login(email, password, role); // Pass role to login
-            // Check user in localStorage
+            await login(email, password, "admin"); // pass role for backend check if needed
+            // After login, redirect based on role
             const user = JSON.parse(localStorage.getItem("user"));
-            if (!user || user.role !== role) {
-                setError("Invalid credentials or role. Please check your login details and role.");
-                return;
-            }
-            if (user.role === "admin") {
+            if (user && user.role === "admin") {
                 navigate("/admin/dashboard", { replace: true });
-            } else if (user.role === "teacher") {
-                navigate("/dashboard", { replace: true });
             } else {
-                setError("Unknown role. Please contact support.");
+                setError("Not an admin account");
             }
         } catch (err) {
             setError(err.response?.data?.message || "Login failed");
@@ -39,19 +31,8 @@ function Login() {
             <div className="row justify-content-center">
                 <div className="col-md-5">
                     <div className="card shadow-sm p-4">
-                        <h3 className="text-center mb-4">Login</h3>
+                        <h3 className="text-center mb-4">Admin Login</h3>
                         <form onSubmit={handleSubmit}>
-                            <div className="mb-3">
-                                <label className="form-label">Role</label>
-                                <select
-                                    className="form-select"
-                                    value={role}
-                                    onChange={e => setRole(e.target.value)}
-                                >
-                                    <option value="teacher">Teacher</option>
-                                    <option value="admin">Admin</option>
-                                </select>
-                            </div>
                             <div className="mb-3">
                                 <label className="form-label">Email</label>
                                 <input
@@ -60,7 +41,7 @@ function Login() {
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
                                     required
-                                    placeholder="Enter your email"
+                                    placeholder="Enter admin email"
                                 />
                             </div>
                             <div className="mb-3">
@@ -71,7 +52,7 @@ function Login() {
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
                                     required
-                                    placeholder="Enter your password"
+                                    placeholder="Enter password"
                                 />
                             </div>
                             {error && <div className="alert alert-danger">{error}</div>}
@@ -84,6 +65,6 @@ function Login() {
             </div>
         </div>
     );
-}
+};
 
-export default Login;
+export default AdminLogin;

@@ -1,9 +1,15 @@
 import React, { useContext } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 
 function Navbar() {
     const { user, logout } = useContext(AuthContext); // ✅ get user from context
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        logout();
+        navigate("/"); // Redirect to HomePage
+    };
 
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
@@ -71,7 +77,7 @@ function Navbar() {
                                 </a>
                                 <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
                                     <li>
-                                        <button className="dropdown-item" onClick={logout}>
+                                        <button className="dropdown-item" onClick={handleLogout}>
                                             Logout
                                         </button>
                                     </li>
