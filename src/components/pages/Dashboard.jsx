@@ -72,8 +72,8 @@ const Dashboard = () => {
             {/* Filters Section */}
             <div className="row g-3 p-3 mb-4 bg-light rounded align-items-end">
                 <div className="col-md-3">
-                    <label className="form-label">Class</label>
-                    <select className="form-select" value={selectedClass} onChange={e => setSelectedClass(e.target.value)}>
+                    <label htmlFor="classSelect" className="form-label">Class</label>
+                    <select id="classSelect" className="form-select" value={selectedClass} onChange={e => setSelectedClass(e.target.value)}>
                         <option value="">Select Class</option>
                         {classes.map(c => <option key={c._id} value={c._id}>{c.name}</option>)}
                     </select>
