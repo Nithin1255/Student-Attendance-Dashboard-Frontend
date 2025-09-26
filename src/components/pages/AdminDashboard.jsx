@@ -48,18 +48,20 @@ const AdminDashboard = () => {
             </div>
 
             {/* Admin Task Cards */}
-            <div className="row row-cols-1 row-cols-md-2 g-4">
+            <div className="row row-cols-1 row-cols-lg-2 g-4">
                 {adminTasks.map((task) => (
                     <div className="col" key={task.title}>
-                        <div className={`card h-100 shadow-sm border-start border-${task.color} border-4`}>
-                            <div className="card-body d-flex flex-column">
+                        <div className="card h-100 shadow-sm" style={{ border: "none" }}>
+                            <div className="card-body p-4 d-flex flex-column">
                                 <div className="d-flex align-items-center mb-3">
-                                    <div className="me-3">{task.icon}</div>
+                                    <div className="p-3 rounded-circle me-3" style={{ backgroundColor: "rgba(13, 110, 253, 0.1)" }}>
+                                        {task.icon}
+                                    </div>
                                     <h4 className="card-title mb-0">{task.title}</h4>
                                 </div>
-                                <p className="card-text flex-grow-1">{task.description}</p>
-                                <Link to={task.link} className={`btn btn-outline-${task.color} mt-auto align-self-start`}>
-                                    Go to {task.title}
+                                <p className="card-text flex-grow-1 text-muted">{task.description}</p>
+                                <Link to={task.link} className="btn btn-primary mt-auto align-self-start">
+                                    Manage {task.title.split(' ')[1]}
                                 </Link>
                             </div>
                         </div>
