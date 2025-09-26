@@ -1,11 +1,21 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom"; // 1. Import Link for navigation
-import { AuthContext } from "../../context/AuthContext"; // 2. Import your AuthContext
+import { Link } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
 import landingImage from "../../assets/landingImage.jpg";
 
 function Home() {
-    // 3. Get the user object from the context
     const { user } = useContext(AuthContext);
+
+    // ✅ FIX: Determine the correct dashboard path based on the user's role
+    const getDashboardPath = () => {
+        if (!user) {
+            return "/login"; // If no user, go to login
+        }
+        if (user.role === "admin") {
+            return "/admin/dashboard"; // If user is an admin
+        }
+        return "/dashboard"; // Otherwise, user is a teacher
+    };
 
     return (
         <div className="landing-page">
@@ -14,16 +24,16 @@ function Home() {
                     {/* Text section */}
                     <div className="col-md-6 text-center text-md-start">
                         <h1 className="display-4 fw-bold mb-3">
-                            Welcome to Student Attendance Dashboard
+                            Welcome to ClassRoll
                         </h1>
                         <p className="lead mb-4">
                             Easily track attendance, manage classes, and generate reports in
                             real-time. Designed for teachers, optimized for productivity.
                         </p>
 
-                        {/* 4. Use the Link component with a conditional path */}
+                        {/* Use the new function to set the path */}
                         <Link
-                            to={user ? "/dashboard" : "/login"}
+                            to={getDashboardPath()}
                             className="btn btn-primary btn-lg"
                         >
                             Get Started
