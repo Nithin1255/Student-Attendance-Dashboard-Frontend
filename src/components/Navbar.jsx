@@ -16,7 +16,7 @@ function Navbar() {
             <div className="container-fluid">
                 {/* Logo */}
                 <NavLink className="navbar-brand fw-bold text-dark" to="/">
-                    MyApp
+                    Attendly
                 </NavLink>
 
                 <button

@@ -34,7 +34,7 @@ const Sidebar = () => {
                     <p className="text-uppercase text-secondary fw-semibold small mb-2">Track</p>
                     <Link to="/attendance" className={linkClass} style={linkStyle} activeclassname="active">
                         <FaClipboardList size={18} />
-                        <span>Attendance Sheet</span>
+                        <span>Mark Attendance</span>
                     </Link>
                 </div>
                 {/* ANALYZE */}

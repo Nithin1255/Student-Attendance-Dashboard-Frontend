@@ -80,7 +80,7 @@ const Attendance = () => {
 
     return (
         <div className="container mt-4" style={{ backgroundColor: '#f7f9fc', padding: 18, borderRadius: 10 }}>
-            <h2 className="mb-4" style={{ color: '#0d6efd', fontSize: 26, fontWeight: 700 }}>Mark Attendance</h2>
+            <h2 className="mb-4" style={{ color: '#0d6efd', fontSize: 26, fontWeight: 700 }}>Attendance Sheet</h2>
 
             {/* Selection Form */}
             <div className="row g-3 align-items-end p-3 mb-4 rounded" style={{ backgroundColor: '#ffffff', boxShadow: '0 4px 16px rgba(13,110,253,0.04)', padding: 18 }}>
