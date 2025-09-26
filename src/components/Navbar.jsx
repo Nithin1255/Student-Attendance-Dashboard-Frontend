@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
+import profilePicture from "../assets/profile.png";
 
 function Navbar() {
     const { user, logout } = useContext(AuthContext); // ✅ get user from context
@@ -63,16 +64,14 @@ function Navbar() {
                                     aria-expanded="false"
                                 >
                                     {/* Profile picture */}
-                                    {user.profilePic ? (
-                                        <img
-                                            src={user.profilePic}
-                                            alt="profile"
-                                            className="rounded-circle me-2"
-                                            style={{ width: "35px", height: "35px", objectFit: "cover" }}
-                                        />
-                                    ) : (
-                                        <div className="rounded-circle bg-secondary me-2" style={{ width: "35px", height: "35px" }}></div>
-                                    )}
+
+                                    <img
+                                        src={profilePicture}
+                                        alt="profile"
+                                        className="rounded-circle me-2 border border-2"
+                                        style={{ width: "35px", height: "35px", objectFit: "cover" }}
+                                    />
+
                                     <span>{user.name}</span>
                                 </a>
                                 <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
