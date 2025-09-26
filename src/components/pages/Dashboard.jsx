@@ -74,12 +74,14 @@ const Dashboard = () => {
                 <div className="col-md-3">
                     <label className="form-label">Class</label>
                     <select className="form-select" value={selectedClass} onChange={e => setSelectedClass(e.target.value)}>
+                        <option value="">Select Class</option>
                         {classes.map(c => <option key={c._id} value={c._id}>{c.name}</option>)}
                     </select>
                 </div>
                 <div className="col-md-3">
                     <label className="form-label">Subject</label>
                     <select className="form-select" value={selectedSubject} onChange={e => setSelectedSubject(e.target.value)}>
+                        <option value="">Select Subject</option>
                         {subjects.map(s => <option key={s._id} value={s._id}>{s.name}</option>)}
                     </select>
                 </div>
@@ -103,7 +105,7 @@ const Dashboard = () => {
                 <div className="card-body">
                     <h5 className="card-title">Attendance Trend (Percentage)</h5>
                     {reportData.length === 0 ? (
-                        <p className="text-center text-muted mt-4">No data available for the selected filters. Please generate a report.</p>
+                        <p className="text-center text-muted mt-4">Select Class Subject and Time Period to generate a report.</p>
                     ) : (
                         <>
                             <div className="d-flex justify-content-between align-items-center mb-3">
